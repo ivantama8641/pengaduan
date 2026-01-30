@@ -36,9 +36,29 @@ Route::middleware(['auth'])->group(function () {
 // Temporary Route for Migration (Delete after use)
 Route::get('/migrate', function() {
     try {
+        // Debug checks
+        $checks = [];
+        $checks['App Key'] = config('app.key') ? 'OK' : 'MISSING (Wajib diisi di Vercel!)';
+        $checks['DB Config'] = config('database.default');
+        $checks['DB Host'] = config('database.connections.pgsql.host') ? 'OK' : 'MISSING (Cek Env Vars)';
+        
+        if (!config('app.key')) {
+            throw new \Exception("APP_KEY belum disetting di Vercel! Copy dari file .env di laptop Anda.");
+        }
+
         \Illuminate\Support\Facades\Artisan::call('migrate:fresh --seed --force');
-        return 'Migration success! Database is ready.';
-    } catch (\Exception $e) {
-        return 'Error: ' . $e->getMessage();
+        
+        return response()->json([
+            'status' => 'Migration success!',
+            'output' => \Illuminate\Support\Facades\Artisan::output(),
+            'debug' => $checks
+        ]);
+    } catch (\Throwable $e) {
+        return response()->json([
+            'error' => $e->getMessage(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+            'debug_info' => $checks ?? 'Checks failed'
+        ], 500);
     }
 });
