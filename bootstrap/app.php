@@ -19,7 +19,22 @@ $app = Application::configure(basePath: dirname(__DIR__))
 
 if (isset($_ENV['VERCEL'])) {
     $app->useStoragePath('/tmp/storage');
-    // Force logs to stderr so Vercel can catch them and we don't get permission errors
+    
+    // Ensure storage structure exists in /tmp
+    if (!is_dir('/tmp/storage/framework/views')) {
+        mkdir('/tmp/storage/framework/views', 0777, true);
+    }
+    if (!is_dir('/tmp/storage/framework/cache')) {
+        mkdir('/tmp/storage/framework/cache', 0777, true);
+    }
+    if (!is_dir('/tmp/storage/framework/sessions')) {
+        mkdir('/tmp/storage/framework/sessions', 0777, true);
+    }
+    if (!is_dir('/tmp/storage/logs')) {
+        mkdir('/tmp/storage/logs', 0777, true);
+    }
+
+    // Force logs to stderr
     $_ENV['LOG_CHANNEL'] = 'stderr';
     $_SERVER['LOG_CHANNEL'] = 'stderr';
 }
