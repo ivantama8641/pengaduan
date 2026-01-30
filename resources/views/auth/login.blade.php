@@ -1,4 +1,4 @@
-<x-main-layout>
+<x-layouts.main>
     <div class="min-h-screen flex items-center justify-center px-4">
         <div class="glass-dark p-10 rounded-3xl w-full max-w-md border border-white/10 shadow-2xl">
             <h1 class="text-3xl font-bold text-center text-white mb-8">Login Admin/Guru</h1>
@@ -29,4 +29,4 @@
             </form>
         </div>
     </div>
-</x-main-layout>
+</x-layouts.main>

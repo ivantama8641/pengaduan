@@ -1,4 +1,4 @@
-<x-main-layout>
+<x-layouts.main>
     <!-- Hero Section -->
     <div class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -124,4 +124,4 @@
             </div>
         </div>
     </div>
-</x-main-layout>
+</x-layouts.main>

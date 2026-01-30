@@ -1,4 +1,4 @@
-<x-main-layout>
+<x-layouts.main>
     <div class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen">
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-3xl font-bold text-white">Dashboard Admin</h1>
@@ -91,4 +91,4 @@
             </div>
         </div>
     </div>
-</x-main-layout>
+</x-layouts.main>

@@ -1,4 +1,4 @@
-<x-main-layout>
+<x-layouts.main>
     <div class="pt-24 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen">
         <a href="{{ url()->previous() }}" class="inline-flex items-center text-gray-400 hover:text-white mb-6 transition">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
@@ -121,4 +121,4 @@
             </div>
         </div>
     </div>
-</x-main-layout>
+</x-layouts.main>

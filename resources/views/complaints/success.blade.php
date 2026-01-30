@@ -1,4 +1,4 @@
-<x-main-layout>
+<x-layouts.main>
     <div class="min-h-screen flex items-center justify-center px-4">
         <div class="glass-dark p-10 rounded-3xl text-center max-w-lg w-full border border-green-500/30 shadow-2xl shadow-green-900/20">
             <div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -25,4 +25,4 @@
             </div>
         </div>
     </div>
-</x-main-layout>
+</x-layouts.main>

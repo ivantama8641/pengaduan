@@ -1,6 +1,12 @@
 {
     "version": 2,
     "framework": null,
+    "env": {
+        "APP_ENV": "production",
+        "APP_DEBUG": "true",
+        "APP_URL": "https://${VERCEL_URL}",
+        "APP_KEY": "${APP_KEY}"
+    },
     "functions": {
         "api/index.php": { "runtime": "vercel-php@0.7.2" }
     },

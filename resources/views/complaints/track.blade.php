@@ -1,4 +1,4 @@
-<x-main-layout>
+<x-layouts.main>
     <div class="pt-32 pb-20 min-h-screen">
         <div class="max-w-3xl mx-auto px-6">
             <h1 class="text-4xl font-bold text-center mb-10">Cek Status Laporan</h1>
@@ -60,4 +60,4 @@
             @endif
         </div>
     </div>
-</x-main-layout>
+</x-layouts.main>
