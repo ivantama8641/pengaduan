@@ -12,13 +12,27 @@ class ComplaintController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
-        $counts = [
-            'total' => Complaint::count(),
-            'pending' => Complaint::where('status', 'pending')->count(),
-            'done' => Complaint::where('status', 'done')->count(),
-        ];
-        return view('welcome', compact('categories', 'counts'));
+        try {
+            $categories = Category::all();
+            $counts = [
+                'total' => Complaint::count(),
+                'pending' => Complaint::where('status', 'pending')->count(),
+                'done' => Complaint::where('status', 'done')->count(),
+            ];
+            return view('welcome', compact('categories', 'counts'));
+        } catch (\Exception $e) {
+            return response()->make("
+                <div style='font-family: sans-serif; padding: 20px; text-align: center;'>
+                    <h1>Database Connection Error</h1>
+                    <p>Sepertinya database belum disetting atau belum dimigrasi.</p>
+                    <p>Error: " . $e->getMessage() . "</p>
+                    <hr>
+                    <h2 style='color: red;'>SOLUSI:</h2>
+                    <p>Silakan buka link ini untuk setup database otomatis:</p>
+                    <a href='" . url('/migrate') . "' style='background: blue; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 1.2em;'>KLIK DISINI: Setup Database (/migrate)</a>
+                </div>
+            ", 500);
+        }
     }
 
     public function store(Request $request)
