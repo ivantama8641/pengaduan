@@ -19,6 +19,9 @@ $app = Application::configure(basePath: dirname(__DIR__))
 
 if (isset($_ENV['VERCEL'])) {
     $app->useStoragePath('/tmp/storage');
+    // Force logs to stderr so Vercel can catch them and we don't get permission errors
+    $_ENV['LOG_CHANNEL'] = 'stderr';
+    $_SERVER['LOG_CHANNEL'] = 'stderr';
 }
 
 return $app;
