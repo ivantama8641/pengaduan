@@ -35,6 +35,10 @@ Route::middleware(['auth'])->group(function () {
 
 // Temporary Route for Migration (Delete after use)
 Route::get('/migrate', function() {
-    \Illuminate\Support\Facades\Artisan::call('migrate:fresh --seed --force');
-    return 'Migration success! Database is ready.';
+    try {
+        \Illuminate\Support\Facades\Artisan::call('migrate:fresh --seed --force');
+        return 'Migration success! Database is ready.';
+    } catch (\Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
 });
