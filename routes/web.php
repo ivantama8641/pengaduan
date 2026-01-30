@@ -32,3 +32,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/complaints/{ticket_id}/status', [ComplaintController::class, 'updateStatus'])->name('complaints.status');
     Route::post('/complaints/{ticket_id}/reply', [ComplaintController::class, 'storeResponse'])->name('complaints.reply');
 });
+
+// Temporary Route for Migration (Delete after use)
+Route::get('/migrate', function() {
+    \Illuminate\Support\Facades\Artisan::call('migrate:fresh --seed --force');
+    return 'Migration success! Database is ready.';
+});
