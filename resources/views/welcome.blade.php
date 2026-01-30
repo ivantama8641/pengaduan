@@ -48,6 +48,16 @@
                 <form action="{{ route('complaints.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
                     @csrf
                     
+                    @if ($errors->any())
+                        <div class="bg-red-500/20 text-red-400 p-4 rounded-xl border border-red-500/50 mb-6">
+                            <ul class="list-disc list-inside">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Identity (Optional) -->
                         <div class="md:col-span-2">
